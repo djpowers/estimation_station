@@ -4,5 +4,6 @@ class Player < ActiveRecord::Base
   validates_uniqueness_of :name
 
   has_many :jars
+  has_many :guesses
 
 end
