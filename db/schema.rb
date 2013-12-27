@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131227022627) do
+ActiveRecord::Schema.define(version: 20131227024238) do
+
+  create_table "jars", force: true do |t|
+    t.string   "contents",   null: false
+    t.integer  "quantity",   null: false
+    t.integer  "player_id",  null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "players", force: true do |t|
     t.string   "name",       null: false
