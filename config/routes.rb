@@ -1,4 +1,7 @@
 EstimationStation::Application.routes.draw do
+  resources :players, only: [:index, :show, :new, :create]
+  resources :jars, only: [:index, :show, :new, :create]
+  resources :guesses, only: [:new, :create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
