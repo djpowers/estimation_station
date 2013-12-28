@@ -1,0 +1,22 @@
+<h1>Jars</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Contents</th>
+      <th>Counted By</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jars.each do |jar| %>
+      <tr>
+        <td><%= jar.contents %></td>
+        <td><%= Player.where(id: jar.player_id).name %></td>
+        <td><%= link_to 'Show', jar %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Jar', new_jar_path %>
