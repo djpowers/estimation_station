@@ -23,7 +23,7 @@ describe User do
 
   describe 'database' do
     it { should have_db_column(:first_name).of_type(:string).with_options(null: false) }
-    it { should have_db_column(:last_name).of_type(:sting).with_options(null: false) }
+    it { should have_db_column(:last_name).of_type(:string).with_options(null: false) }
     it { should have_db_column(:email).of_type(:string).with_options(null: false) }
   end
 

@@ -28,4 +28,25 @@ feature 'user registers for site', %Q{
     expect(page).to have_content('Sign Out')
   end
 
+  scenario 'required information is not supplied' do
+    visit root_path
+    click_link 'Sign Up'
+    click_button 'Sign Up'
+
+    within '.input.string.required.user_first_name' do
+      expect(page).to have_content("can't be blank")
+    end
+    within '.input.string.required.user_last_name' do
+      expect(page).to have_content("can't be blank")
+    end
+    within '.input.email.required.user_email' do
+      expect(page).to have_content("can't be blank")
+    end
+    within '.input.password.required.user_password' do
+      expect(page).to have_content("can't be blank")
+    end
+
+    expect(page).to_not have_content('Sign Out')
+  end
+
 end
