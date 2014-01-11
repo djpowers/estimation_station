@@ -3,7 +3,7 @@ require 'spec_helper'
 feature 'user registers for site', %Q{
   As an unregistered user
   I want to register for the site
-  So that I may share and comment on videos
+  So that I may create estimation games
 } do
 
   # Acceptance Criteria

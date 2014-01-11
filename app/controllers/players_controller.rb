@@ -16,9 +16,10 @@ class PlayersController < ApplicationController
     @player = Player.new(player_params)
 
     if @player.save
-      redirect_to @player, notice: 'Player was successfully created. Good luck!'
+      flash[:notice] = 'Player was successfully added.'
+      redirect_to player_path(@player)
     else
-      puts 'There was an error!'
+      flash[:notice] = 'There was an error!'
       render :new
     end
   end

@@ -1,4 +1,8 @@
 EstimationStation::Application.routes.draw do
+  resources :users, only: :none do
+    resources :groups, only: [:index, :new, :create, :show]
+  end
+  resources :players, only: [:new, :index, :create, :show]
   devise_for :users
   root 'pages#index'
   # resources :players, only: [:index, :show, :new, :create]

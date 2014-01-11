@@ -1,0 +1,18 @@
+<%= link_to 'Create New Group', new_user_group_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Group</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr id=<%= "group_#{group.id}" %>>
+        <td><%= group.title %></td>
+        <td><%= link_to 'Show', user_group_path(current_user, group) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
