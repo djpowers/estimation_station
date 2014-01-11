@@ -9,4 +9,19 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-EstimationStation::Application.config.secret_key_base = '25e41716ce0b640ba124a9ebf4f8f30cb46acfe571c9981d9c5f3a74f3bcd2c9feaf7eae756623d0af4d44e65926a46ba5964f1ae2ed415f1f6c63278ad52289'
+require 'securerandom'
+
+def secure_token
+  token_file = Rails.root.join('.secret')
+  if File.exist?(token_file)
+    # Use the existing token.
+    File.read(token_file).chomp
+  else
+    # Generate a new token and store
+    token = SecureRandom.hex(64)
+    File.write(token_file, token)
+    token
+  end
+end
+
+EstimationStation::Application.config.secret_key_base = secure_token

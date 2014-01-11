@@ -39,6 +39,11 @@ group :test, :development do
   gem 'valid_attribute'
   gem 'shoulda-matchers'
   gem 'rails-erd'
+  gem 'capybara'
+end
+
+group :development do
+  gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
 end

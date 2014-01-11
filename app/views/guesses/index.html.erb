@@ -1,0 +1,22 @@
+<h1>Guesses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Player</th>
+      <th>Jar</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @guesses.each do |guess| %>
+      <tr>
+        <td><%= Player.where(id: guess.player_id).first.name %></td>
+        <td><%= Jar.where(id: guess.jar_id).first.contents %></td>
+        <td><%= link_to 'Show', guess %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Guess', new_guess_path %>

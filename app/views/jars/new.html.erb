@@ -22,8 +22,11 @@
     <%= f.text_field :quantity %>
   </div>
   <div class="field">
-    <%= f.label :category %><br>
+    <%= f.label :counted_by %><br>
     <%= f.collection_select(:player_id, Player.all, :id, :name) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
   </div>
 <% end %>
 
