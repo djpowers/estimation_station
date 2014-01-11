@@ -49,4 +49,18 @@ feature 'user registers for site', %Q{
     expect(page).to_not have_content('Sign Out')
   end
 
+  scenario 'password confirmation does not match password' do
+    visit root_path
+    click_link 'Sign Up'
+
+    fill_in 'user_password', with: 'password'
+    fill_in 'Password Confirmation', with: 'somethingDifferent'
+    click_button 'Sign Up'
+
+    within '.input.password.required.user_password_confirmation' do
+      expect(page).to have_content("doesn't match")
+    end
+    expect(page).to_not have_content("Sign Out")
+  end
+
 end
