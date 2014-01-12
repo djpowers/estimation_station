@@ -14,8 +14,8 @@ describe Jar do
   it { should have_valid(:quantity).when(1, 55, 100) }
   it { should_not have_valid(:quantity).when(nil, "", -1) }
 
-  it { should validate_presence_of(:player) }
-  it { should belong_to(:player) }
+  it { should validate_presence_of :group }
+  it { should belong_to :group }
 
   it { should have_many(:guesses) }
 

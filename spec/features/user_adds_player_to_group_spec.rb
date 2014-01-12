@@ -41,7 +41,7 @@ feature 'user adds player to group', %Q{
     fill_in 'Name', with: new_player.name
     click_button 'Create Player'
 
-    expect(page).to have_content('Name has already been taken')
+    expect(page).to have_content('has already been taken')
   end
 
   scenario 'name is blank' do

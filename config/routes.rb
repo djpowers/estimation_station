@@ -4,6 +4,8 @@ EstimationStation::Application.routes.draw do
   end
   resources :players, only: [:new, :index, :create, :show]
   devise_for :users
+
+  get '/groups/:group_id/new', to: 'players#new', as: 'new_group_player'
   root 'pages#index'
   # resources :players, only: [:index, :show, :new, :create]
   # resources :jars, only: [:index, :show, :new, :create]
