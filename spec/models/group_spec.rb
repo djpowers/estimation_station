@@ -11,9 +11,6 @@ describe Group do
     it { should belong_to :user }
     it { should have_many :players }
     it { should have_many :jars }
-
-    it { should accept_nested_attributes_for :players }
-    it { should accept_nested_attributes_for :jars }
   end
 
   describe 'database' do

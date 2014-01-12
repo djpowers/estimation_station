@@ -10,6 +10,7 @@ feature 'user adds player to group', %Q{
   #
   # I must be authenticated
   # I must provide a unique name for a player
+  # It must be associated with a group
 
   scenario 'valid information is supplied' do
     user = FactoryGirl.create(:user_with_group)

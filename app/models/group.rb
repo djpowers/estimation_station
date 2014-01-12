@@ -9,6 +9,4 @@ class Group < ActiveRecord::Base
   has_many :jars,
     inverse_of: :group
 
-  accepts_nested_attributes_for :players, :jars
-
 end
