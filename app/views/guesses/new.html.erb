@@ -1,33 +1,10 @@
 <h1>New Guess</h1>
 
-<%= form_for(@guess) do |f| %>
-  <% if @guess.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@guess.errors.count, "error") %> probhited this event from being saved:</h2>
+<%= simple_form_for([@group, @guess]) do |f| %>
 
-      <ul>
-        <% @author.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.input :quantity %>
+  <%= f.input :jar_id, collection: @group.jars, label_method: :contents, value_method: :id, include_blank: true %>
+  <%= f.input :player_id, collection: @group.players, value_method: :id, include_blank: true %>
+  <%= f.button :submit %>
 
-  <div class="field">
-    <%= f.label :quantity %><br>
-    <%= f.text_field :quantity %>
-  </div>
-  <div class="field">
-    <%= f.label :jar %><br>
-    <%= f.collection_select(:jar_id, Jar.all, :id, :contents) %>
-  </div>
-  <div class="field">
-    <%= f.label :player %><br>
-    <%= f.collection_select(:player_id, Player.all, :id, :name) %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
-
-<%= link_to 'Back', guesses_path %>

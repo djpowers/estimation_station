@@ -1,4 +1,36 @@
 <h1><%= @group.title %></h1>
 
-<%= link_to 'Add Player', new_group_player_path(@group) %><br>
-<%= link_to 'Add Jar', new_group_jar_path(@group) %>
+<table>
+  <thead>
+    <tr>
+      <th><%= link_to 'Add Jar', new_group_jar_path(@group) %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @jars.each do |jar| %>
+      <tr id=<%= "jar_#{jar.id}" %>>
+        <td><%= jar.contents %></td>
+        <td><%= link_to 'Enter Guess', new_group_guess_path(@group) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+<table>
+  <thead>
+    <tr>
+      <th><%= link_to 'Add Player', new_group_player_path(@group) %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr id=<%= "player_#{player.id}" %>>
+        <td><%= player.name %></td>
+        <td><%= link_to 'Show', group_player_path(player.group, player) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -26,6 +26,9 @@ feature 'user adds player to group', %Q{
     click_button 'Create Player'
 
     expect(page).to have_content('Player was successfully added.')
+
+    visit group_path(user.groups.last)
+    expect(page).to have_content(player.name)
   end
 
   scenario 'name already exists' do

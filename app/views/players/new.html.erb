@@ -1,9 +1,8 @@
 <h1>New Player</h1>
 
-<%= simple_form_for(@player) do |f| %>
+<%= simple_form_for([@group, @player]) do |f| %>
 
   <%= f.input :name %>
-  <%= f.input :group_id, :as => :hidden, :input_html => { value: @group.id } %>
   <%= f.button :submit %>
 
 <% end %>

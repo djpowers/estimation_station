@@ -1,13 +1,12 @@
 EstimationStation::Application.routes.draw do
-  resources :users, only: :none do
-    resources :groups, only: [:index, :new, :create, :show]
+  resources :groups, only: [:index, :new, :create, :show] do
+    resources :players, only: [:new, :index, :create, :show]
+    resources :jars, only: [:new, :create, :index, :show]
+    resources :guesses, only: [:new, :create]
   end
-  resources :players, only: [:new, :index, :create, :show]
   devise_for :users
 
   root 'pages#index'
-  get '/groups/:group_id/new', to: 'players#new', as: 'new_group_player'
-  get '/groups/:group_id/new', to: 'jars#new', as: 'new_group_jar'
   # resources :players, only: [:index, :show, :new, :create]
   # resources :jars, only: [:index, :show, :new, :create]
   # resources :guesses, only: [:index, :show, :new, :create]

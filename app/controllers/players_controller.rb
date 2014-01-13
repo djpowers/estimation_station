@@ -15,10 +15,12 @@ class PlayersController < ApplicationController
 
   def create
     @player = Player.new(player_params)
+    @group = Group.find(params[:group_id])
+    @player.group_id = @group.id
 
     if @player.save
       flash[:notice] = 'Player was successfully added.'
-      redirect_to player_path(@player)
+      redirect_to group_player_path(@group, @player)
     else
       @group = Group.find(@player.group_id)
       flash[:notice] = 'There was an error!'

@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
 
     if @group.save
       flash[:notice] = 'Group was successfully created.'
-      redirect_to user_group_path(current_user, @group)
+      redirect_to group_path(@group)
     else
       flash[:notice] = 'There was an error'
       render 'new'
@@ -21,6 +21,8 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.find(params[:id])
+    @players = @group.players
+    @jars = @group.jars
   end
 
   def index

@@ -16,7 +16,7 @@ feature 'user creates group', %Q{
 
   scenario 'user is not authenticated' do
     user = FactoryGirl.create(:user)
-    visit new_user_group_path(user)
+    visit new_group_path(user)
 
     expect(page).to have_content('You need to sign in or sign up before continuing.')
   end

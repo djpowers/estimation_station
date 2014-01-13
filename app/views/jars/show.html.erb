@@ -1,8 +1,6 @@
 <p>
   <strong>Contents:</strong>
   <%= @jar.contents %><br>
-  <strong>Counted by:</strong>
-  <%= Player.where(id: @jar.player_id).name %><br>
 </p>
 
-<%= link_to 'Back', jars_path %>
+<%= link_to 'Back', group_jars_path %>

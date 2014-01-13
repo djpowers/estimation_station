@@ -10,13 +10,17 @@ class GuessesController < ApplicationController
 
   def new
     @guess = Guess.new
+    @group = Group.find(params[:group_id])
   end
 
   def create
     @guess = Guess.new(guess_params)
+    @group = Group.find(params[:group_id])
+    # @guess.group_id = @group.id
 
     if @guess.save
-      redirect_to @guess, notice: 'Guess was successfully created. Thanks for playing!'
+      flash[:notice] = 'Guess was successfully created. Thanks for playing!'
+      redirect_to group_path(@group)
     else
       puts 'There was an error!'
       render :new
@@ -26,7 +30,7 @@ class GuessesController < ApplicationController
   private
 
     def guess_params
-      params.require(:guess).permit(:quantity, :player_id, :jar_id)
+      params.require(:guess).permit(:quantity, :player_id, :jar_id, :group_id)
     end
 
 end
