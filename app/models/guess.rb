@@ -8,4 +8,8 @@ class Guess < ActiveRecord::Base
   validates_presence_of :jar
   belongs_to :jar
 
+  validates_uniqueness_of :player_id,
+    scope: :jar_id,
+    message: 'This player has already guesses for this jar.'
+
 end

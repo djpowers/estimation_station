@@ -34,8 +34,44 @@ feature 'player records a guess', %Q{
     expect(page).to have_content('Guess was successfully created. Thanks for playing!')
   end
 
-  scenario 'player enters additional guess on a jar'
+  scenario 'player enters additional guess on a jar' do
+    user = FactoryGirl.create(:user_with_group)
+    jar = FactoryGirl.create(:jar, group_id: user.groups.first.id)
+    player = FactoryGirl.create(:player, group_id: user.groups.first.id)
+    FactoryGirl.create(:guess, player_id: player.id, jar_id: jar.id)
+    sign_in_as(user)
+    within "#group_#{user.groups.last.id}" do
+      click_link 'Show'
+    end
 
-  scenario 'player submits form with blank fields'
+    within "#jar_#{jar.id}" do
+      click_link 'Enter Guess'
+    end
+
+    fill_in 'guess_quantity', with: 50
+    select player.name, from: 'guess_player_id'
+    select jar.contents, from: 'guess_jar_id'
+    click_button 'Create Guess'
+
+    expect(page).to have_content('This player has already guesses for this jar.')
+  end
+
+
+  scenario 'player submits form with blank fields' do
+    user = FactoryGirl.create(:user_with_group)
+    jar = FactoryGirl.create(:jar, group_id: user.groups.first.id)
+    player = FactoryGirl.create(:player, group_id: user.groups.first.id)
+    sign_in_as(user)
+    within "#group_#{user.groups.last.id}" do
+      click_link 'Show'
+    end
+
+    within "#jar_#{jar.id}" do
+      click_link 'Enter Guess'
+    end
+    click_button 'Create Guess'
+
+    expect(page).to have_content('not a number')
+  end
 
 end
