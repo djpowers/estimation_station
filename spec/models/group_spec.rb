@@ -18,4 +18,12 @@ describe Group do
     it { should have_db_column(:user_id).of_type(:integer).with_options(null: false) }
   end
 
+  it 'returns the winner for a jar' do
+    group = FactoryGirl.create(:group)
+    player = FactoryGirl.create(:player, group_id: group.id)
+    jar = FactoryGirl.create(:jar, group_id: group.id)
+    guess = Guess.create(quantity: 50, player_id: player.id, jar_id: jar.id)
+    expect(group.calculate_winners).to include(player)
+  end
+
 end

@@ -1,9 +1,15 @@
 <h1><%= @group.title %></h1>
 
+<% if @group.jars.present? %>
+  <input id='winner' type='button' value="Calculate Winners">
+  <p id='winner_name'><%=  @group.calculate_winners %></p>
+<% end %>
+
 <table>
   <thead>
     <tr>
       <th><%= link_to 'Add Jar', new_group_jar_path(@group) %></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -22,6 +28,7 @@
   <thead>
     <tr>
       <th><%= link_to 'Add Player', new_group_player_path(@group) %></th>
+      <th></th>
     </tr>
   </thead>
 

@@ -4,7 +4,7 @@ feature 'user adds jar to group', %Q{
   As a user
   I want to add a jar
   So that players can guess its quantity
-  } do
+} do
 
   # Acceptance Criteria
   #

@@ -17,3 +17,11 @@
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
+
+$( document ).ready(function() {
+  $( '#winner_name' ).toggleClass( 'hidden' );
+  $( '#winner' ).on( 'click', function() {
+    $( '#winner_name' ).toggleClass( 'hidden' );
+  });
+
+});
