@@ -5,8 +5,10 @@ class Group < ActiveRecord::Base
 
   belongs_to :user
   has_many :players,
+    dependent: :destroy,
     inverse_of: :group
   has_many :jars,
+    dependent: :destroy,
     inverse_of: :group
 
   def calculate_winners
@@ -16,7 +18,7 @@ class Group < ActiveRecord::Base
       current_best_guess = 0
       self.players.each do |player|
         if player.guesses.present?
-          quantity = player.guesses.find_by(jar_id: jar.id).quantity
+          quantity = player.guesses.find_by(jar_id: jar.id).try(:quantity)
           if quantity > jar.quantity
             next
           else quantity > current_best_guess

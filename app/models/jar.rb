@@ -9,5 +9,13 @@ class Jar < ActiveRecord::Base
   belongs_to :group
 
   has_many :guesses
+  has_many :players,
+    through: :guesses
+
+  def calculate_winner
+    eligible_guesses = self.guesses.select{ |g| g.quantity <= self.quantity }
+    winning_guess = eligible_guesses.max_by{ |g| g.quantity }
+    winning_guess.player
+  end
 
 end

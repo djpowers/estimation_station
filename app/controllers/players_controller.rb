@@ -22,7 +22,7 @@ class PlayersController < ApplicationController
       flash[:notice] = 'Player was successfully added.'
       redirect_to group_player_path(@group, @player)
     else
-      @group = Group.find(@player.group_id)
+      # @group = Group.find(@player.group_id)
       flash[:notice] = 'There was an error!'
       render :new
     end

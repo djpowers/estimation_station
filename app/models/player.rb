@@ -7,5 +7,7 @@ class Player < ActiveRecord::Base
   belongs_to :group
 
   has_many :guesses
+  has_many :jars,
+    through: :guesses
 
 end

@@ -13,14 +13,30 @@
 
   <body>
 
-  <nav>
-    <ul>
-      <% if user_signed_in? %>
-        <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-      <% end %>
+  <nav class="top-bar" data-topbar>
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href=/>Estimation Station</a><h1>
+      </li>
+      <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <ul class="right">
+        <% if user_signed_in? %>
+        <li class="active"><a href="#"><%= link_to 'Groups', groups_path(current_user) %></a></li>
+        <li class="active"><a href="#"><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></a></li>
+        <li>
+        <% else %>
+        <li class="has-dropdown">
+          <a href="#">Account</a>
+          <ul class="dropdown">
+            <li><a href="#"><%= link_to 'Sign In', new_user_session_path %></a></li>
+            <li><a href="#"><%= link_to 'Sign Up', new_user_registration_path %></a></li>
+          </ul>
+        </li>
+        <% end %>
+      </ul>
     </ul>
   </nav>
 
