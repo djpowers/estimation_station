@@ -10,8 +10,6 @@ describe Jar do
     it { should have_valid(:contents).when("Candy Canes", "Gumballs") }
     it { should_not have_valid(:contents).when(nil, "") }
 
-    it { should validate_uniqueness_of (:contents) }
-
     it { should have_valid(:quantity).when(1, 55, 100) }
     it { should_not have_valid(:quantity).when(nil, "", -1) }
 
@@ -20,6 +18,12 @@ describe Jar do
 
     it { should have_many(:guesses) }
     it { should have_many(:players).through(:guesses) }
+
+    it do
+      should validate_uniqueness_of(:contents)
+      .scoped_to(:group_id)
+      .with_message('A jar with these contents has already been created.')
+    end
   end
 
   describe 'database' do

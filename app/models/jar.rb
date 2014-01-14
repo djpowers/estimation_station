@@ -1,7 +1,9 @@
 class Jar < ActiveRecord::Base
 
   validates_presence_of :contents
-  validates_uniqueness_of :contents
+  validates_uniqueness_of :contents,
+    scope: :group_id,
+    message: 'A jar with these contents has already been created.'
 
   validates_numericality_of :quantity, greater_than_or_equal_to: 0
 

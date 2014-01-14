@@ -23,7 +23,7 @@ describe Group do
     player = FactoryGirl.create(:player, group_id: group.id)
     jar = FactoryGirl.create(:jar, group_id: group.id)
     guess = Guess.create(quantity: 50, player_id: player.id, jar_id: jar.id)
-    expect(group.calculate_winners).to include(player)
+    expect(group.display_winners.values).to include(player.name)
   end
 
 end

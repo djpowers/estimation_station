@@ -11,23 +11,13 @@ class Group < ActiveRecord::Base
     dependent: :destroy,
     inverse_of: :group
 
-  def calculate_winners
-    winners = []
+  def display_winners
+    winners = {}
     self.jars.each do |jar|
-      current_winner = ''
-      current_best_guess = 0
-      self.players.each do |player|
-        if player.guesses.present?
-          quantity = player.guesses.find_by(jar_id: jar.id).try(:quantity)
-          if quantity > jar.quantity
-            next
-          else quantity > current_best_guess
-            current_best_guess = quantity
-            current_winner = player
-          end
-        end
+      if jar.nil?
+        next
+      else winners[jar.contents] = jar.calculate_winner.name
       end
-      winners << current_winner
     end
     winners
   end

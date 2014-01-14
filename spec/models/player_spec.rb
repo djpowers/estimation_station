@@ -10,13 +10,17 @@ describe Player do
     it { should have_valid(:name).when("Brian W.", "David") }
     it { should_not have_valid(:name).when(nil, "") }
 
-    it { should validate_uniqueness_of(:name) }
-
     it { should validate_presence_of :group }
     it { should belong_to :group }
 
     it { should have_many(:guesses) }
     it { should have_many(:jars).through(:guesses) }
+
+    it do
+      should validate_uniqueness_of(:name)
+      .scoped_to(:group_id)
+      .with_message('A player with this name has already been created.')
+    end
   end
 
   describe 'database' do
