@@ -15,9 +15,15 @@ class Jar < ActiveRecord::Base
     through: :guesses
 
   def calculate_winner
-    eligible_guesses = self.guesses.select{ |g| g.quantity <= self.quantity }
-    winning_guess = eligible_guesses.max_by{ |g| g.quantity }
-    winning_guess.player
+    if self.guesses.present?
+      eligible_guesses = self.guesses.select{ |g| g.quantity <= self.quantity }
+      if eligible_guesses.empty?
+        nil
+      else
+        winning_guess = eligible_guesses.max_by{ |g| g.quantity }
+        winning_guess.player
+      end
+    end
   end
 
 end

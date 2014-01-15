@@ -16,7 +16,10 @@ class Group < ActiveRecord::Base
     self.jars.each do |jar|
       if jar.nil?
         next
-      else winners[jar.contents] = jar.calculate_winner.name
+      elsif !jar.guesses.present?
+        next
+      else
+        winners[jar.contents] = jar.calculate_winner.try(:name)
       end
     end
     winners

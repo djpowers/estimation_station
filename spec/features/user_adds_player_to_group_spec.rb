@@ -44,8 +44,12 @@ feature 'user adds player to group', %Q{
     new_player = FactoryGirl.build(:player, name: 'Sarah')
     fill_in 'Name', with: new_player.name
     click_button 'Create Player'
-
-    expect(page).to have_content('has already been taken')
+    expect(page).to have_content('Player was successfully added.')
+    click_link 'Back'
+    click_link 'Add Player'
+    fill_in 'Name', with: new_player.name
+    click_button 'Create Player'
+    expect(page).to have_content('has already been created')
   end
 
   scenario 'name is blank' do

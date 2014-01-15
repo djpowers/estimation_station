@@ -43,9 +43,15 @@ feature 'user adds jar to group', %Q{
 
     click_link 'Add Jar'
     fill_in 'Contents', with: jar.contents
+    fill_in 'Quantity', with: jar.quantity
     click_button 'Create Jar'
-
-    expect(page).to have_content('has already been taken')
+    expect(page).to have_content('Jar was successfully created. Thanks for bringing it!')
+    click_link 'Back'
+    click_link 'Add Jar'
+    fill_in 'Contents', with: jar.contents
+    fill_in 'Quantity', with: jar.quantity
+    click_button 'Create Jar'
+    expect(page).to have_content('has already been created')
   end
 
   scenario 'blank fields are submitted, errors displayed' do
