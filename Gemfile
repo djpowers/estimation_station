@@ -32,6 +32,10 @@ group :doc do
   gem 'sdoc', require: false
 end
 
+group :staging, :production do
+  gem 'rails_12factor'
+end
+
 gem 'devise'
 gem 'foundation-rails'
 gem 'simple_form'
