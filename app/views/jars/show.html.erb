@@ -1,6 +1,10 @@
-<p>
-  <strong>Contents:</strong>
-  <%= @jar.contents %><br>
-</p>
+<div class="row">
+  <div class="small-6 small-centered columns">
+    <p>
+      <strong>Contents:</strong>
+      <%= @jar.contents %><br>
+    </p>
 
-<%= link_to 'Back', group_path(@jar.group) %>
+    <%= link_to 'Back', group_path(@jar.group) %>
+  </div>
+</div>

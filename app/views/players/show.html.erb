@@ -1,6 +1,10 @@
-<p>
-  <strong>Name:</strong>
-  <%= @player.name %><br>
-</p>
+<div class="row">
+  <div class="small-6 small-centered columns">
+    <p>
+      <strong>Name:</strong>
+      <%= @player.name %><br>
+    </p>
 
-<%= link_to 'Back', group_path(@player.group) %>
+    <%= link_to 'Back', group_path(@player.group) %>
+  </div>
+</div>

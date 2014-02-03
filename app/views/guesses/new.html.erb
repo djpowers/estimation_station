@@ -1,10 +1,14 @@
-<h1>New Guess</h1>
+<div class="row">
+  <div class="form-inputs small-6 small-centered columns">
+    <h1>New Guess</h1>
 
-<%= simple_form_for([@group, @guess]) do |f| %>
+    <%= simple_form_for([@group, @guess]) do |f| %>
 
-  <%= f.input :quantity %>
-  <%= f.input :jar_id, collection: @group.jars, label_method: :contents, value_method: :id, include_blank: true %>
-  <%= f.input :player_id, collection: @group.players, value_method: :id, include_blank: true %>
-  <%= f.button :submit %>
+      <%= f.input :quantity %>
+      <%= f.input :jar_id, collection: @group.jars, label_method: :contents, value_method: :id, include_blank: true %>
+      <%= f.input :player_id, collection: @group.players, value_method: :id, include_blank: true %>
+      <%= f.button :submit %>
 
-<% end %>
+    <% end %>
+  </div>
+</div>

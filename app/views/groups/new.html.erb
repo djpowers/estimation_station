@@ -1,6 +1,10 @@
-<%= simple_form_for(@group) do |f| %>
+<div class="row">
+  <div class="form-inputs small-6 small-centered columns">
+    <%= simple_form_for(@group) do |f| %>
 
-  <%= f.input :title %>
-  <%= f.button :submit, 'Create Group' %>
+      <%= f.input :title %>
+      <%= f.button :submit, 'Create Group' %>
 
-<% end %>
+    <% end %>
+  </div>
+</div>
