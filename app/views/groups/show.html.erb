@@ -4,7 +4,7 @@
 
     <% if @group.jars.present? %>
       <input id='winner' type='button' value="Calculate Winners">
-      <p id='winner_name'><%=  @group.display_winners %></p>
+      <p class="hidden" id='winner_name'><%=  @group.display_winners %></p>
     <% end %>
 
     <table>
