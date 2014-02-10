@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Group do
+describe Game do
 
   let(:blanks){ [nil, ''] }
 
@@ -18,12 +18,12 @@ describe Group do
     it { should have_db_column(:user_id).of_type(:integer).with_options(null: false) }
   end
 
-  it 'returns the winner for a group' do
-    group = FactoryGirl.create(:group)
-    player = FactoryGirl.create(:player, group_id: group.id)
-    jar = FactoryGirl.create(:jar, group_id: group.id)
+  it 'returns the winner for a game' do
+    game = FactoryGirl.create(:game)
+    player = FactoryGirl.create(:player, game_id: game.id)
+    jar = FactoryGirl.create(:jar, game_id: game.id)
     guess = Guess.create(quantity: 50, player_id: player.id, jar_id: jar.id)
-    expect(group.display_winners.values).to include(player.name)
+    expect(game.display_winners.values).to include(player.name)
   end
 
 end

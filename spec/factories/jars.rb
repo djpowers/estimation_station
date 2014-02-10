@@ -3,6 +3,6 @@ FactoryGirl.define do
     contents 'Gum Drops'
     quantity 53
 
-    group
+    game
   end
 end

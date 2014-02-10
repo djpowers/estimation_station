@@ -11,7 +11,7 @@ describe User do
     it { should have_valid(:last_name).when("Powers", "McCann") }
     it { should_not have_valid(:last_name).when(*blanks) }
 
-    it { should have_many :groups }
+    it { should have_many :games }
 
     it 'has a matching password confirmation for the password' do
       user = User.new

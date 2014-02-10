@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140111191557) do
+ActiveRecord::Schema.define(version: 20140210041819) do
 
-  create_table "groups", force: true do |t|
+  create_table "games", force: true do |t|
     t.string   "title",      null: false
     t.integer  "user_id",    null: false
     t.datetime "created_at"
@@ -31,14 +31,14 @@ ActiveRecord::Schema.define(version: 20140111191557) do
   create_table "jars", force: true do |t|
     t.string   "contents",   null: false
     t.integer  "quantity",   null: false
-    t.integer  "group_id",   null: false
+    t.integer  "game_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "players", force: true do |t|
     t.string   "name",       null: false
-    t.integer  "group_id",   null: false
+    t.integer  "game_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

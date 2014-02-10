@@ -1,16 +1,16 @@
 <div class="row">
   <div class="small-6 small-centered columns">
-    <h1><%= @group.title %></h1>
+    <h1><%= @game.title %></h1>
 
-    <% if @group.jars.present? %>
+    <% if @game.jars.present? %>
       <input id='winner' type='button' value="Calculate Winners">
-      <p class="hidden" id='winner_name'><%=  @group.display_winners %></p>
+      <p class="hidden" id='winner_name'><%=  @game.display_winners %></p>
     <% end %>
 
     <table>
       <thead>
         <tr>
-          <th><%= link_to 'Add Jar', new_group_jar_path(@group) %></th>
+          <th><%= link_to 'Add Jar', new_game_jar_path(@game) %></th>
           <th></th>
         </tr>
       </thead>
@@ -19,7 +19,7 @@
         <% @jars.each do |jar| %>
           <tr id=<%= "jar_#{jar.id}" %>>
             <td><%= jar.contents %></td>
-            <td><%= link_to 'Enter Guess', new_group_guess_path(@group) %></td>
+            <td><%= link_to 'Enter Guess', new_game_guess_path(@game) %></td>
           </tr>
         <% end %>
       </tbody>
@@ -29,7 +29,7 @@
     <table>
       <thead>
         <tr>
-          <th><%= link_to 'Add Player', new_group_player_path(@group) %></th>
+          <th><%= link_to 'Add Player', new_game_player_path(@game) %></th>
           <th></th>
         </tr>
       </thead>
@@ -38,7 +38,7 @@
         <% @players.each do |player| %>
           <tr id=<%= "player_#{player.id}" %>>
             <td><%= player.name %></td>
-            <td><%= link_to 'Show', group_player_path(player.group, player) %></td>
+            <td><%= link_to 'Show', game_player_path(player.game, player) %></td>
           </tr>
         <% end %>
       </tbody>

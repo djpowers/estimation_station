@@ -14,11 +14,11 @@ feature 'player records a guess', %Q{
   # Player can only record one guess per jar
 
   scenario 'player selects name and enters valid guess' do
-    user = FactoryGirl.create(:user_with_group)
-    jar = FactoryGirl.create(:jar, group_id: user.groups.first.id)
-    player = FactoryGirl.create(:player, group_id: user.groups.first.id)
+    user = FactoryGirl.create(:user_with_game)
+    jar = FactoryGirl.create(:jar, game_id: user.games.first.id)
+    player = FactoryGirl.create(:player, game_id: user.games.first.id)
     sign_in_as(user)
-    within "#group_#{user.groups.last.id}" do
+    within "#game_#{user.games.last.id}" do
       click_link 'Show'
     end
 
@@ -35,12 +35,12 @@ feature 'player records a guess', %Q{
   end
 
   scenario 'player enters additional guess on a jar' do
-    user = FactoryGirl.create(:user_with_group)
-    jar = FactoryGirl.create(:jar, group_id: user.groups.first.id)
-    player = FactoryGirl.create(:player, group_id: user.groups.first.id)
+    user = FactoryGirl.create(:user_with_game)
+    jar = FactoryGirl.create(:jar, game_id: user.games.first.id)
+    player = FactoryGirl.create(:player, game_id: user.games.first.id)
     FactoryGirl.create(:guess, player_id: player.id, jar_id: jar.id)
     sign_in_as(user)
-    within "#group_#{user.groups.last.id}" do
+    within "#game_#{user.games.last.id}" do
       click_link 'Show'
     end
 
@@ -58,11 +58,11 @@ feature 'player records a guess', %Q{
 
 
   scenario 'player submits form with blank fields' do
-    user = FactoryGirl.create(:user_with_group)
-    jar = FactoryGirl.create(:jar, group_id: user.groups.first.id)
-    player = FactoryGirl.create(:player, group_id: user.groups.first.id)
+    user = FactoryGirl.create(:user_with_game)
+    jar = FactoryGirl.create(:jar, game_id: user.games.first.id)
+    player = FactoryGirl.create(:player, game_id: user.games.first.id)
     sign_in_as(user)
-    within "#group_#{user.groups.last.id}" do
+    within "#game_#{user.games.last.id}" do
       click_link 'Show'
     end
 

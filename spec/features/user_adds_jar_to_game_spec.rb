@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-feature 'user adds jar to group', %Q{
+feature 'user adds jar to game', %Q{
   As a user
   I want to add a jar
   So that players can guess its quantity
@@ -11,12 +11,12 @@ feature 'user adds jar to group', %Q{
   # I must be authenticated
   # I must provide a unique contents for a jar
   # I must provide a positive numerical value for quantity
-  # It must be associated wiht a group
+  # It must be associated wiht a game
 
   scenario 'valid information is supplied' do
-    user = FactoryGirl.create(:user_with_group)
+    user = FactoryGirl.create(:user_with_game)
     sign_in_as(user)
-    within "#group_#{user.groups.last.id}" do
+    within "#game_#{user.games.last.id}" do
       click_link 'Show'
     end
 
@@ -29,15 +29,15 @@ feature 'user adds jar to group', %Q{
 
     expect(page).to have_content('Jar was successfully created. Thanks for bringing it!')
 
-    visit group_path(user.groups.last)
+    visit game_path(user.games.last)
     expect(page).to have_content(jar.contents)
   end
 
   scenario 'contents already exists' do
-    user = FactoryGirl.create(:user_with_group)
+    user = FactoryGirl.create(:user_with_game)
     sign_in_as(user)
     jar = FactoryGirl.create(:jar)
-    within "#group_#{user.groups.last.id}" do
+    within "#game_#{user.games.last.id}" do
       click_link 'Show'
     end
 
@@ -56,9 +56,9 @@ feature 'user adds jar to group', %Q{
 
   scenario 'blank fields are submitted, errors displayed' do
 
-    user = FactoryGirl.create(:user_with_group)
+    user = FactoryGirl.create(:user_with_game)
     sign_in_as(user)
-    within "#group_#{user.groups.last.id}" do
+    within "#game_#{user.games.last.id}" do
       click_link 'Show'
     end
 

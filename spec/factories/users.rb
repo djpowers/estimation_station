@@ -7,8 +7,8 @@ FactoryGirl.define do
     sequence(:email) { |n| "person#{n}@example.com" }
     password 'password'
     password_confirmation 'password'
-    factory :user_with_group do
-      after(:create) { |user| FactoryGirl.create(:group, user: user) }
+    factory :user_with_game do
+      after(:create) { |user| FactoryGirl.create(:game, user: user) }
     end
   end
 end

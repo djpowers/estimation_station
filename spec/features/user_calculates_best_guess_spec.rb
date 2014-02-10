@@ -15,25 +15,25 @@ feature 'user calculates best guess', %Q{
 
   scenario 'it returns the player with the best guess' do
 
-    user = FactoryGirl.create(:user_with_group)
-    jar = FactoryGirl.create(:jar, group_id: user.groups.first.id)
-    player1 = FactoryGirl.create(:player, name: 'John', group_id: user.groups.first.id)
-    player2 = FactoryGirl.create(:player, name: 'Jane', group_id: user.groups.first.id)
+    user = FactoryGirl.create(:user_with_game)
+    jar = FactoryGirl.create(:jar, game_id: user.games.first.id)
+    player1 = FactoryGirl.create(:player, name: 'John', game_id: user.games.first.id)
+    player2 = FactoryGirl.create(:player, name: 'Jane', game_id: user.games.first.id)
     sign_in_as(user)
 
-    visit new_group_guess_path(user.groups.first)
+    visit new_game_guess_path(user.games.first)
     fill_in 'guess_quantity', with: 50
     select player1.name, from: 'guess_player_id'
     select jar.contents, from: 'guess_jar_id'
     click_button 'Create Guess'
 
-    visit new_group_guess_path(user.groups.first)
+    visit new_game_guess_path(user.games.first)
     fill_in 'guess_quantity', with: 5
     select player2.name, from: 'guess_player_id'
     select jar.contents, from: 'guess_jar_id'
     click_button 'Create Guess'
 
-    visit group_path(user.groups.first)
+    visit game_path(user.games.first)
     # expect(page).to_not have_content(player1.name)
     click_button 'Calculate Winners'
     expect(page).to have_content(player1.name)

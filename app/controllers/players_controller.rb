@@ -10,19 +10,18 @@ class PlayersController < ApplicationController
 
   def new
     @player = Player.new
-    @group = Group.find(params[:group_id])
+    @game = Game.find(params[:game_id])
   end
 
   def create
     @player = Player.new(player_params)
-    @group = Group.find(params[:group_id])
-    @player.group_id = @group.id
+    @game = Game.find(params[:game_id])
+    @player.game_id = @game.id
 
     if @player.save
       flash[:notice] = 'Player was successfully added.'
-      redirect_to group_player_path(@group, @player)
+      redirect_to game_player_path(@game, @player)
     else
-      # @group = Group.find(@player.group_id)
       flash[:notice] = 'There was an error!'
       render :new
     end
@@ -31,7 +30,7 @@ class PlayersController < ApplicationController
   private
 
     def player_params
-      params.require(:player).permit(:name, :group_id)
+      params.require(:player).permit(:name, :game_id)
     end
 
 end

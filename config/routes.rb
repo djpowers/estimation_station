@@ -1,5 +1,5 @@
 EstimationStation::Application.routes.draw do
-  resources :groups, only: [:index, :new, :create, :show] do
+  resources :games, only: [:index, :new, :create, :show] do
     resources :players, only: [:new, :index, :create, :show]
     resources :jars, only: [:new, :create, :index, :show]
     resources :guesses, only: [:new, :create]

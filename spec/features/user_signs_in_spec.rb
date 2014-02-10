@@ -20,7 +20,7 @@ feature 'user signs in', %Q{
 
     expect(page).to have_content('Welcome back!')
     expect(page).to have_content('Sign Out')
-    expect(page).to have_content('Create New Group')
+    expect(page).to have_content('Create New Game')
   end
 
   scenario 'a nonexistant email and password is supplied' do
@@ -58,11 +58,11 @@ feature 'user signs in', %Q{
     expect(page).to have_content('You are already signed in')
   end
 
-  scenario 'an exisiting user with groups signs in' do
-    user = FactoryGirl.create(:user_with_group)
+  scenario 'an exisiting user with games signs in' do
+    user = FactoryGirl.create(:user_with_game)
     sign_in_as(user)
 
-    expect(page).to have_content(user.groups.last.title)
+    expect(page).to have_content(user.games.last.title)
   end
 
 end

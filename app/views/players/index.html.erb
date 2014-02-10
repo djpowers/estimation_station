@@ -11,7 +11,7 @@
     <% @players.each do |player| %>
     <tr>
       <td><%= player.name %></td>
-      <td><%= link_to 'Show', group_player_path(player.group_id, player) %></td>
+      <td><%= link_to 'Show', game_player_path(player.game_id, player) %></td>
     </tr>
     <% end %>
   </tbody>
@@ -19,4 +19,4 @@
 
 <br>
 
-<%= link_to 'New Player', new_group_player_path %>
+<%= link_to 'New Player', new_game_player_path %>

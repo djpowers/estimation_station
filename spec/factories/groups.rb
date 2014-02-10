@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :group do
+  factory :game do
     title '2nd Grade Class'
     user
   end

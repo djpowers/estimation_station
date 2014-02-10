@@ -10,17 +10,17 @@ class JarsController < ApplicationController
 
   def new
     @jar = Jar.new
-    @group = Group.find(params[:group_id])
+    @game = Game.find(params[:game_id])
   end
 
   def create
     @jar = Jar.new(jar_params)
-    @group = Group.find(params[:group_id])
-    @jar.group_id = @group.id
+    @game = Game.find(params[:game_id])
+    @jar.game_id = @game.id
 
     if @jar.save
       flash[:notice] = 'Jar was successfully created. Thanks for bringing it!'
-      redirect_to group_jar_path(@group, @jar)
+      redirect_to game_jar_path(@game, @jar)
     else
       puts 'There was an error!'
       render :new

@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-feature 'user adds player to group', %Q{
+feature 'user adds player to game', %Q{
   As a user
-  I want to add a player to a group
+  I want to add a player to a game
   So that I can record their guesses
 } do
 
@@ -10,12 +10,12 @@ feature 'user adds player to group', %Q{
   #
   # I must be authenticated
   # I must provide a unique name for a player
-  # It must be associated with a group
+  # It must be associated with a game
 
   scenario 'valid information is supplied' do
-    user = FactoryGirl.create(:user_with_group)
+    user = FactoryGirl.create(:user_with_game)
     sign_in_as(user)
-    within "#group_#{user.groups.last.id}" do
+    within "#game_#{user.games.last.id}" do
       click_link 'Show'
     end
 
@@ -27,14 +27,14 @@ feature 'user adds player to group', %Q{
 
     expect(page).to have_content('Player was successfully added.')
 
-    visit group_path(user.groups.last)
+    visit game_path(user.games.last)
     expect(page).to have_content(player.name)
   end
 
   scenario 'name already exists' do
-    user = FactoryGirl.create(:user_with_group)
+    user = FactoryGirl.create(:user_with_game)
     sign_in_as(user)
-    within "#group_#{user.groups.last.id}" do
+    within "#game_#{user.games.last.id}" do
       click_link 'Show'
     end
 
@@ -53,9 +53,9 @@ feature 'user adds player to group', %Q{
   end
 
   scenario 'name is blank' do
-    user = FactoryGirl.create(:user_with_group)
+    user = FactoryGirl.create(:user_with_game)
     sign_in_as(user)
-    within "#group_#{user.groups.last.id}" do
+    within "#game_#{user.games.last.id}" do
       click_link 'Show'
     end
 

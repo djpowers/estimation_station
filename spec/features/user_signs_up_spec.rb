@@ -24,7 +24,7 @@ feature 'user registers for site', %Q{
     fill_in 'Password Confirmation', with: 'password', match: :prefer_exact
     click_button 'Sign Up'
 
-    expect(page).to have_content('Welcome! Add a group to get started!')
+    expect(page).to have_content('Welcome! Add a game to get started!')
     expect(page).to have_content('Sign Out')
   end
 

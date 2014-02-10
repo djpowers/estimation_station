@@ -11,10 +11,10 @@
     <% @jars.each do |jar| %>
       <tr id=<%= "jar_#{jar.id}" %>>
         <td><%= jar.contents %></td>
-        <td><%= link_to 'Show', group_jar_path(jar.group_id, jar) %></td>
+        <td><%= link_to 'Show', game_jar_path(jar.game_id, jar) %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'New Jar', new_group_jar_path %>
+<%= link_to 'New Jar', new_game_jar_path %>

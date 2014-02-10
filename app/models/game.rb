@@ -1,4 +1,4 @@
-class Group < ActiveRecord::Base
+class Game < ActiveRecord::Base
 
   validates_presence_of :title
   validates_presence_of :user
@@ -6,10 +6,10 @@ class Group < ActiveRecord::Base
   belongs_to :user
   has_many :players,
     dependent: :destroy,
-    inverse_of: :group
+    inverse_of: :game
   has_many :jars,
     dependent: :destroy,
-    inverse_of: :group
+    inverse_of: :game
 
   def display_winners
     winners = {}
