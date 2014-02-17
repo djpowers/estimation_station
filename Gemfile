@@ -39,6 +39,7 @@ end
 gem 'devise'
 gem 'foundation-rails'
 gem 'simple_form'
+gem 'coveralls', require: false
 
 group :test, :development do
   gem 'pry-rails'
