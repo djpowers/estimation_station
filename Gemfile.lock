@@ -41,6 +41,7 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    chartkick (1.2.4)
     choice (0.1.6)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -209,6 +210,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   capybara
+  chartkick
   coffee-rails (~> 4.0.0)
   coveralls
   devise
