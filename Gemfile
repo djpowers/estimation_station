@@ -40,7 +40,6 @@ end
 gem 'devise'
 gem 'foundation-rails'
 gem 'simple_form'
-gem 'coveralls', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
