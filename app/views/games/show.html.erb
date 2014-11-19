@@ -4,7 +4,20 @@
 
     <% if @game.jars.present? %>
       <input id='winner' type='button' value="Calculate Winners">
-      <p class="hidden" id='winner_name'><%=  @game.display_winners %></p>
+      <div class="hidden" id='winner_name'>
+        <h3>Winners:</h3>
+        <% @game.display_winners.each do |key, value| %>
+          <%= "#{key}: #{value}" %><br />
+        <% end %>
+      </div>
+      <hr>
+      <div id='chart_kick' class='hidden'>
+        <% @game.jars.each do |jar| %>
+          <%= "#{jar.contents}: #{jar.quantity}" %>
+          <%= column_chart Guess.where(jar_id: jar.id).group(:quantity).maximum(:quantity) %>
+          <hr>
+        <% end %>
+      </div>
     <% end %>
 
     <table>

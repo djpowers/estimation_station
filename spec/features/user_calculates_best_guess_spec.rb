@@ -34,8 +34,7 @@ feature 'user calculates best guess', %Q{
     click_button 'Create Guess'
 
     visit game_path(user.games.first)
-    # expect(page).to_not have_content(player1.name)
     click_button 'Calculate Winners'
-    expect(page).to have_content(player1.name)
+    expect(page).to have_content(jar.contents + ': ' + player1.name)
   end
 end

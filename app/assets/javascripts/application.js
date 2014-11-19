@@ -21,6 +21,7 @@ $(function(){ $(document).foundation(); });
 $( document ).ready(function() {
   $( '#winner' ).on( 'click', function() {
     $( '#winner_name' ).removeClass( 'hidden' );
+    $( '#chart_kick' ).removeClass( 'hidden' );
   });
 
 });
