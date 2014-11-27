@@ -32,7 +32,7 @@
         <% @jars.each do |jar| %>
           <tr id=<%= "jar_#{jar.id}" %>>
             <td><%= jar.contents %></td>
-            <td><%= link_to 'Enter Guess', new_game_guess_path(@game) %></td>
+            <td><%= link_to 'Enter Guess', new_game_guess_path(@game, jar: jar.id) %></td>
           </tr>
         <% end %>
       </tbody>

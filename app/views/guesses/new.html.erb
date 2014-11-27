@@ -5,7 +5,7 @@
     <%= simple_form_for([@game, @guess]) do |f| %>
 
       <%= f.input :quantity %>
-      <%= f.input :jar_id, collection: @game.jars, label_method: :contents, value_method: :id, include_blank: true %>
+      <%= f.input :jar_id, collection: @game.jars, label_method: :contents, value_method: :id, selected: params[:jar], include_blank: true %>
       <%= f.input :player_id, collection: @game.players, value_method: :id, include_blank: true %>
       <%= f.button :submit %>
 

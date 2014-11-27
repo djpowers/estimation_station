@@ -28,7 +28,6 @@ feature 'player records a guess', %Q{
 
     fill_in 'guess_quantity', with: 50
     select player.name, from: 'guess_player_id'
-    select jar.contents, from: 'guess_jar_id'
     click_button 'Create Guess'
 
     expect(page).to have_content('Guess was successfully created. Thanks for playing!')
@@ -50,7 +49,6 @@ feature 'player records a guess', %Q{
 
     fill_in 'guess_quantity', with: 50
     select player.name, from: 'guess_player_id'
-    select jar.contents, from: 'guess_jar_id'
     click_button 'Create Guess'
 
     expect(page).to have_content('This player has already guesses for this jar.')
